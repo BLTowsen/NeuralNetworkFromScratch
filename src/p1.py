@@ -82,6 +82,22 @@ class Activation_ReLU:
         self.output = np.maximum(0, inputs)
 
 
+# Softmax activation
+class Activation_Softmax:
+
+    # Forward pass
+    def forward(self, inputs):
+
+        # Get unnormalized probabilities
+        exp_values = np.exp(inputs - np.nmax(inputs, axis=1, keepdims=True)) # changes values so that is negative when exponentiated, so get fractional numbers
+
+        # Normalize them for each sample
+        probabilities = exp_values / np.sum(exp_values, axis=1, keepdims=True)
+
+        self.output = probabilities
+
+
+
 layer1 = Layer_Dense(2, 5)
 activation1 = Activation_ReLU()
 print(X)

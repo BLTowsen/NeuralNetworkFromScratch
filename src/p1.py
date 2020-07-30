@@ -21,6 +21,16 @@ for output in layer_outputs:
     exp_values.append(E ** output)
 print('exponentiated values:')
 print(exp_values)
+
+norm_base = sum(exp_values) #sum all values
+norm_values = []
+for value in exp_values:
+    norm_values.append(value/norm_base)
+print('normalized expinentiated values:')
+print(norm_values)
+print('sim of normalized values: ', sum(norm_values))
+
+
 ###################################
 
 

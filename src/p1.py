@@ -12,6 +12,9 @@ nnfs.init()  # setting random seed and default data type for numpy to use
 
 
 ##################################
+# Long version of softmax function
+##################################
+
 layer_outputs = [4.8, 1.21, 2.385]
 
 E = 2.71828182846
@@ -30,10 +33,37 @@ print('normalized expinentiated values:')
 print(norm_values)
 print('sim of normalized values: ', sum(norm_values))
 
-
 ###################################
+# Sleek softmax function
+###################################
+layer_outputs = [4.8, 1.21, 2.385]
 
+# For each value in a vector, calculate the exponential value
+exp_values = np.exp(layer_outputs)
+print('exponentiated values:')
+print(exp_values)
 
+# Now normalize values
+norm_values = exp_values / np.sum(exp_values)
+print('normalized exponentiated values:')
+print(norm_values)
+
+print('sum of normalized values: ', np.sum(norm_values))
+
+##########################################
+
+"""
+sum(arrayOfArrays, axis=?, keepdims=?) ? = 0, 1 or none
+0=columns(adds columns and outputs array)
+1 = rows (adds rows and outputs array)
+none = adds everything(outputs num)
+keepdims = True || False - to keep original dimensions of array or not
+"""
+layer_outputs = [[4.8, 1.21, 2.385],
+                 [8.9, -1.21, 0.2],
+                 [1.41, 1.051, 0.026]]
+print('so we can sum axis 1, but note the current shape:')
+print(np.sum(layer_outputs, axis=1, keepdims=True))
 
 X, y = spiral_data(100, 3)
 

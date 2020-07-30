@@ -4,10 +4,26 @@ from nnfs.datasets import spiral_data
 nnfs.init()  # setting random seed and default data type for numpy to use
 
 
+# X = [[1, 2, 3, 2.5],
+#      [2.0, 5.0, -1.0, 2.0],
+#      [-1.5, 2.7, 3.3, -0.8]]
 
-X = [[1, 2, 3, 2.5],
-     [2.0, 5.0, -1.0, 2.0],
-     [-1.5, 2.7, 3.3, -0.8]]
+# X = [[1], [2]]
+
+
+##################################
+layer_outputs = [4.8, 1.21, 2.385]
+
+E = 2.71828182846
+
+exp_values = []
+for output in layer_outputs:
+    exp_values.append(E ** output)
+print('exponentiated values:')
+print(exp_values)
+###################################
+
+
 
 X, y = spiral_data(100, 3)
 
@@ -28,10 +44,11 @@ class Activation_ReLU:
 
 layer1 = Layer_Dense(2, 5)
 activation1 = Activation_ReLU()
+print(X)
 
 layer1.forward(X)
 activation1.forward(layer1.output)
 
-#print(layer1.output)
+# print(layer1.output)
 
 print(activation1.output)
